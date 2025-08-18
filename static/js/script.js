@@ -1,6 +1,6 @@
 // globals
-CURRENTGUESS = 1;
-
+let CURRENTGUESS = 1;
+const FINALGUESS = 6;
 
 /**
  * get the questions from database
@@ -21,7 +21,7 @@ async function getQuestions() {
 /**
  * get random question from response
  */
-function chooseQuestion(questions){
+function chooseQuestion(questions) {
     return questions[Math.floor(Math.random() * questions.length)]
 }
 
@@ -44,7 +44,7 @@ function createHints(lyrics) {
  * set the dropdown menu
  */
 function setDropdown(questions) {
-    
+
     const select = document.querySelector("#answer");
     let first = true;
 
@@ -65,16 +65,78 @@ function setDropdown(questions) {
 function setHint(hints) {
 
     const hint = document.querySelector(`.hint-${CURRENTGUESS}`);
+    const current = document.querySelector("#current-guess");
     hint.textContent = hints[CURRENTGUESS - 1];
+    current.textContent = CURRENTGUESS;
     CURRENTGUESS++;
 
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+/**
+ * sets the answer box when the quiz is either lost or won
+ */
+function setAnswerBox(outcome, question) {
+
+    if (outcome) {
+        // get the answer box
+        const answerBox = document.querySelector(".answer-col");
+        // create the elements
+        let correctTitle = document.createElement("h2");
+        correctTitle.classList.add("display-6", "answer-title", "gradient-text-dark");
+        correctTitle.textContent = "Correct!";
+
+        let resetButton = document.createElement("button");
+        resetButton.setAttribute("type", "button");
+        resetButton.classList.add("btn", "btn-lg", "submit-button", "reset-button");
+        resetButton.textContent = "Play again?";
+
+        // add the elements 
+        answerBox.innerHTML = "";
+        answerBox.appendChild(correctTitle);
+        answerBox.appendChild(resetButton);
+
+        // add event listener to button
+        document.querySelector(".reset-button").addEventListener("click", function () {
+            location.reload();
+        })
+    }
+
+    else {
+        // get the answer box
+        const answerBox = document.querySelector(".answer-col");
+        // create the elements
+        let correctTitle = document.createElement("h2");
+        correctTitle.classList.add("display-6", "answer-title", "gradient-text-dark");
+        correctTitle.textContent = "Incorrect.";
+
+        let correctText = document.createElement("p");
+        correctText.textContent = `The correct answer was ${question.artist} - ${question.title}.`;
+
+        let resetButton = document.createElement("button");
+        resetButton.setAttribute("type", "button");
+        resetButton.classList.add("btn", "btn-lg", "submit-button", "reset-button");
+        resetButton.textContent = "Play again?";
+
+        // add the elements 
+        answerBox.innerHTML = "";
+        answerBox.appendChild(correctTitle);
+        answerBox.appendChild(correctText);
+        answerBox.appendChild(resetButton);
+
+        // add event listener to button
+        document.querySelector(".reset-button").addEventListener("click", function () {
+            location.reload();
+        })
+
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
 
     const questions = getQuestions();
     questions.then((data) => {
-    
+
         const question = chooseQuestion(data);
         const hints = createHints(question.lyrics);
 
@@ -84,41 +146,24 @@ document.addEventListener("DOMContentLoaded", function() {
         setHint(hints);
 
         // event listener for button
-        document.querySelector(".submit-button").addEventListener("click", function() {
+        document.querySelector(".submit-button").addEventListener("click", function () {
 
             // first check if answer is correct
             const chosenAnswer = document.querySelector(".answer-input").value;
             if (chosenAnswer == question.id) {
-                // get the answer box
-                const answerBox = document.querySelector(".answer-col");
-                console.log(answerBox);
-                // create the elements
-                let correctTitle = document.createElement("h2");
-                correctTitle.classList.add("display-6", "answer-title", "gradient-text-dark");
-                correctTitle.textContent = "Correct!";
-
-                let resetButton = document.createElement("button");
-                resetButton.setAttribute("type", "button");
-                resetButton.classList.add("btn", "btn-lg", "submit-button", "reset-button");
-                resetButton.textContent = "Play again?";
-
-                // add the elements 
-                answerBox.innerHTML = "";
-                answerBox.appendChild(correctTitle);
-                answerBox.appendChild(resetButton);
-
-                // add event listener to button
-                document.querySelector(".reset-button").addEventListener("click", function () {
-                    location.reload();
-                })
+                setAnswerBox(true, question);
             }
-
+            // next check if the game is lost
+            else if (CURRENTGUESS > FINALGUESS) {
+                setAnswerBox(false, question);
+            }
+            // otherwise display the next hint
+            else {
+                setHint(hints);
+            }
         })
-
-
     })
-    .catch((error) => {
-        console.error(`Could not get questions: ${error}`);
-    });
-
+        .catch((error) => {
+            console.error(`Could not get questions: ${error}`);
+        });
 });
