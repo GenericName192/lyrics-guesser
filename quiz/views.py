@@ -16,5 +16,5 @@ def quiz_page(request):
 
 
 def get_questions(request):
-    print("test2")
-    return JsonResponse(Question.objects.all())
+    questions = Question.objects.all()
+    return JsonResponse([question.serialise() for question in questions], safe=False)
