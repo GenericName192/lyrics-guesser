@@ -59,9 +59,15 @@ function setDropdown(questions) {
     }
 }
 
-
+/**
+ * set the hints
+ */
 function setHint(hints) {
- 
+
+    const hint = document.querySelector(`.hint-${CURRENTGUESS}`);
+    hint.textContent = hints[CURRENTGUESS - 1];
+    CURRENTGUESS++;
+
 }
 
 
