@@ -70,7 +70,6 @@ function setHint(hints) {
 
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
 
     const questions = getQuestions();
@@ -83,6 +82,38 @@ document.addEventListener("DOMContentLoaded", function() {
         setDropdown(data);
         // set the initial hint
         setHint(hints);
+
+        // event listener for button
+        document.querySelector(".submit-button").addEventListener("click", function() {
+
+            // first check if answer is correct
+            const chosenAnswer = document.querySelector(".answer-input").value;
+            if (chosenAnswer == question.id) {
+                // get the answer box
+                const answerBox = document.querySelector(".answer-col");
+                console.log(answerBox);
+                // create the elements
+                let correctTitle = document.createElement("h2");
+                correctTitle.classList.add("display-6", "answer-title", "gradient-text-dark");
+                correctTitle.textContent = "Correct!";
+
+                let resetButton = document.createElement("button");
+                resetButton.setAttribute("type", "button");
+                resetButton.classList.add("btn", "btn-lg", "submit-button", "reset-button");
+                resetButton.textContent = "Play again?";
+
+                // add the elements 
+                answerBox.innerHTML = "";
+                answerBox.appendChild(correctTitle);
+                answerBox.appendChild(resetButton);
+
+                // add event listener to button
+                document.querySelector(".reset-button").addEventListener("click", function () {
+                    location.reload();
+                })
+            }
+
+        })
 
 
     })
