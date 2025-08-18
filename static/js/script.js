@@ -40,12 +40,28 @@ function createHints(lyrics) {
     return hints
 }
 
+/**
+ * set the dropdown menu
+ */
 function setDropdown(questions) {
     
+    const select = document.querySelector("#answer");
+    let first = true;
+
+    for (let question of questions) {
+        let option = document.createElement("option");
+        option.setAttribute("value", question.id);
+        if (first) {
+            option.required = true;
+        }
+        option.text = `${question.artist} - ${question.title}`;
+        select.add(option);
+    }
 }
 
-function setHint(hints) {
 
+function setHint(hints) {
+ 
 }
 
 
@@ -57,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const question = chooseQuestion(data);
         const hints = createHints(question.lyrics);
 
-        // set the questions into the dropdown
+        // set the answers into the dropdown
+        setDropdown(data);
+        // set the initial hint
         setHint(hints);
 
 
