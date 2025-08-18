@@ -1,3 +1,11 @@
 from django.db import models
 
+
 # Create your models here.
+class Question(models.Model):
+    """Model for each question"""
+    title = models.CharField()
+    lyrics = models.TextField()
+
+    def __str__(self):
+        return self.title
