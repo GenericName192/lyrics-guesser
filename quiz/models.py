@@ -5,6 +5,7 @@ from django.db import models
 class Question(models.Model):
     """Model for each question"""
     title = models.CharField()
+    artist = models.CharField(default="Placeholder")
     lyrics = models.TextField()
 
     def __str__(self):
