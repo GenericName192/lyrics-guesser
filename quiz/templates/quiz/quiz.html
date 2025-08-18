@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- header -->
+<header id="header" class="container">
+    <div class="row justify-content-center header-box">
+        <div class="col-12 text-center">
+            <h1 class="display-3 header-title gradient-text">Lyric Guesser</h1>
+            <p class="header-text">Guess the song by its lyrics!</p>
+        </div>
+    </div>
+</header>
+
+<!-- main content -->
+<main>
+    <!-- hint area -->
+    <section id="hint-area" class="container">
+        <div class="row justify-content-center hint-box">
+            <div class="col-12 text-center">
+                <h2 class="display-6 hint-title gradient-text-dark">Guess <span id="current-guess">#</span> out of 6
+                </h2>
+            </div>
+            <div class="col-12 text-center">
+                <div class="hint">
+                    <p class="hint-1 hint-text"><i class="fa-solid fa-lock"></i> Hint 1 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+                <div class="hint">
+                    <p class="hint-2 hint-text"><i class="fa-solid fa-lock"></i> Hint 2 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+                <div class="hint">
+                    <p class="hint-3 hint-text"><i class="fa-solid fa-lock"></i> Hint 3 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+                <div class="hint">
+                    <p class="hint-4 hint-text"><i class="fa-solid fa-lock"></i> Hint 4 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+                <div class="hint">
+                    <p class="hint-5 hint-text"><i class="fa-solid fa-lock"></i> Hint 5 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+                <div class="hint">
+                    <p class="hint-6 hint-text"><i class="fa-solid fa-lock"></i> Hint 6 <i class="fa-solid fa-lock"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- guess box -->
+    <section id="answer-area" class="container">
+        <div class="row justify-content-center answer-box">
+            <div class="col-12 text-center">
+                <h2 class="display-6 answer-title gradient-text-dark">Guess!</h2>
+                <input type="text" class="form-control answer-input" placeholder="Enter a song title">
+                <button type="button" class="btn btn-lg submit-button">Guess</button>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock extra_scripts %}

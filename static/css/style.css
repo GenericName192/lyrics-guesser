@@ -1,0 +1,174 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* variables */
+:root {
+    --primary-font: "Quicksand", sans-serif;
+    /* purple */
+    --background-colour-1: #3d1047;
+    /* blue */
+    --background-colour-2: #060348;
+    /* light blue */
+    --highlight-colour-1: #b7e1ff;
+    /* light green */
+    --highlight-colour-2: #a1ffb2;
+    /* light purple */
+    --highlight-colour-3: #dfa9ff;
+    /* bluepurple */
+    --highlight-colour-4: rgb(157, 145, 255);
+    /* offwhite purple */
+    --highlight-colour-5: #f7eeff;
+    /* offwhite uhhh */
+    --highlight-colour-6: #f0d5f6;
+    /* warning colour */
+    --warning-colour: #e0463b;
+}
+
+/* general styles */
+* {
+    font-family: var(--primary-font);
+    font-weight: bold;
+}
+
+body {
+    margin-top: 56px;
+    background-color: var(--highlight-colour-1);
+}
+
+.gradient-text {
+    background-image: -webkit-gradient(linear, right top, left top, from(var(--highlight-colour-1)), to(var(--highlight-colour-2)));
+    background-image: -o-linear-gradient(right, var(--highlight-colour-1), var(--highlight-colour-2));
+    background-image: linear-gradient(to left, var(--highlight-colour-1), var(--highlight-colour-2));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.gradient-text-dark {
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--background-colour-1)), to(var(--background-colour-2)));
+    background-image: -o-linear-gradient(left, var(--background-colour-1), var(--background-colour-2));
+    background-image: linear-gradient(to right, var(--background-colour-1), var(--background-colour-2));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* navbar */
+#navbar {
+    background-color: var(--background-colour-1);
+}
+
+#brand-text {
+    font-weight: bold;
+}
+
+/* header */
+.header-box {
+    background-color: var(--background-colour-1);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.header-title {
+    font-weight: bold;
+}
+
+.header-text {
+    color: var(--highlight-colour-1);
+    font-size: 1.2rem;
+}
+
+/* main content */
+
+/* hint area */
+.hint-title {
+    font-weight: bold;
+}
+
+.hint-box {
+    background-color: var(--highlight-colour-3);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.hint {
+    background-color: var(--highlight-colour-5);
+    padding: auto;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.hint-text {
+    padding: 5px;
+    color: var(--background-colour-2);
+}
+
+/* answer area */
+.answer-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--highlight-colour-5);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.answer-title {
+    font-weight: bold;
+}
+
+.answer-input {
+    margin: 10px;
+}
+
+/* buttons */
+.submit-button {
+    background-color: var(--background-colour-2);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.submit-button:hover {
+    background-color: var(--background-colour-1);
+    color: white;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+/* footer */
+#footer {
+    background-color: var(--background-colour-1);
+    padding-top: 20px;
+}
+
+.footer-title-text {
+    color: var(--highlight-colour-1);
+    font-weight: bold;
+}
+
+.footer-icon {
+    color: var(--highlight-colour-1);
+    font-size: 1.5rem;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.footer-icon:hover {
+    color: var(--highlight-colour-2);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
