@@ -167,3 +167,46 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(`Could not get questions: ${error}`);
         });
 });
+
+// overlay functions :D
+
+document.addEventListener("DOMContentLoaded", function () {
+    const overlay = document.getElementById('gameOverlay');
+    const playBtn = document.getElementById('playBtn');
+    const rulesBtn = document.getElementById('rulesBtn');
+    const rulesModal = document.getElementById('rulesModal');
+    const closeModal = document.getElementById('closeModal');
+
+    playBtn.addEventListener('click', function() {
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            const url = new URL(window.location);
+            url.searchParams.set('started', 'true');
+            window.history.replaceState({}, '', url);
+        }, 300);
+    });
+
+    rulesBtn.addEventListener('click', function() {
+        rulesModal.style.display = 'block';
+        setTimeout(() => {
+            rulesModal.classList.add('show');
+        }, 10);
+    });
+
+    closeModal.addEventListener('click', function() {
+        rulesModal.classList.remove('show');
+        setTimeout(() => {
+            rulesModal.style.display = 'none';
+        }, 300);
+    });
+
+    rulesModal.addEventListener('click', function(e) {
+        if (e.target === rulesModal) {
+            rulesModal.classList.remove('show');
+            setTimeout(() => {
+                rulesModal.style.display = 'none';
+            }, 300);
+        }
+    });
+});
