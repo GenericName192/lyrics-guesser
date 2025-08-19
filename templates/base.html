@@ -48,6 +48,39 @@
         </div>
     </nav>
 
+<!-- epic overlay -->
+<div class="game-overlay" id="gameOverlay">
+    <div class="overlay-content">
+        <h1 class="overlay-title">Lyric Guesser</h1>
+        <p class="overlay-subtitle">Guess the song by its lyrics!</p>
+        <div class="overlay-buttons">
+            <button class="overlay-btn play-btn" id="playBtn">Play</button>
+            <button class="overlay-btn rules-btn" id="rulesBtn">Rules</button>
+        </div>
+    </div>
+</div>
+
+<div class="rules-modal" id="rulesModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">How to Play</h2>
+        </div>
+        <div class="modal-body">
+            <h4>The Game</h4>
+            <p>Guess the correct song title and artist from the given lyrics.</p>
+            
+            <h4>How it Works</h4>
+            <p>You'll see lyrics revealed one line at a time. You have 6 chances to guess the correct song from the dropdown menu.</p>
+            
+            <h4>Give it a real think!</h4>
+            <p>The fewer hints you need, the better your score!</p>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn" id="closeModal">Got it!</button>
+        </div>
+    </div>
+</div>
+
     {% block content %}
     {% endblock content %}
 
