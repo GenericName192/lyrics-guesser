@@ -49,7 +49,7 @@
     </nav>
 
 <!-- epic overlay -->
-<div class="game-overlay" id="gameOverlay">
+<div class="game-overlay" id="gameOverlay" {% if request.GET.started %} style="display: none;" {% endif %}>
     <div class="overlay-content">
         <h1 class="overlay-title">Lyric Guesser</h1>
         <p class="overlay-subtitle">Guess the song by its lyrics!</p>

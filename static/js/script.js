@@ -181,6 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.classList.add('fade-out');
         setTimeout(() => {
             overlay.style.display = 'none';
+            const url = new URL(window.location);
+            url.searchParams.set('started', 'true');
+            window.history.replaceState({}, '', url);
         }, 300);
     });
 
