@@ -19,4 +19,4 @@ class Question(models.Model):
             "title": self.title,
             "artist": self.artist,
             "lyrics": self.lyrics,
-        }
+            }

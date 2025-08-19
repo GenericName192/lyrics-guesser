@@ -8,13 +8,7 @@ def quiz_page(request):
     return render(request, "quiz/quiz.html")
 
 
-# def make_hints(lyrics):
-#     hints = lyrics.split("\n")
-#     for i in range(len(hints)):
-#         hints[i] = hints[i].strip()
-#     return hints
-
-
 def get_questions(request):
     questions = Question.objects.all()
-    return JsonResponse([question.serialise() for question in questions], safe=False)
+    return JsonResponse([question.serialise() for question in questions],
+                        safe=False)
